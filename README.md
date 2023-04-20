@@ -7,7 +7,7 @@
 * 한번 촬영 시 5장을 찍어 부족한 데이터를 늘림
 * 선별된 약 20명의 학생을 대상으로 매일 두번씩 약 한달 간의 데이터를 수집
 
-* 얼굴 인식에 사용된 모델은 haarcascade_frontalface_default.xml을 사용
+* 얼굴 인식에 사용된 모델은 haarcascade_frontalface_default.xml을 사용 (OpenCV 모델)
 
 ## Model
 
@@ -33,7 +33,17 @@ CNN을 기반으로 얼굴의 특징을 추출하여 얼굴 온도 데이터와 
 ## Using
 
 * serviceui.py - 메인 서비스 ui 코드
-* service.py - 메인 서비스 코드 (import해서 사용)
- * do_service가 서비스 실행 코드
+* service.py - 메인 서비스 코드 (import해서 사용) 
+    * do_service가 서비스 실행 코드
+* preprocessing.py - 전처리코드 ( import해서 사용)
+  * load_img 전처리 코드
+  * get_data 전처리된 코드를 모델 학습에 들어갈 수 있도록 전처리
+  * model_processing은 서비스 단계에서 전처리하는 코드
+* data_anl.py - 데이터 통계 코드
+  * anal 라벨, 인원수 통계내어 excel로 return
+  * remove_img config/config.csv 에 있는 인원을 제외한 이미지 삭제
+  * analysis2 전체 인원의 날짜별 라벨 통계
+* fsensor.py - 데이터수집 카메라 ui 코드
 
-
+> src-img에 날짜별 폴더로 만든 후 이미지 넣으면됨 
+> <br>전처리 코드처리하면 dst-img에 자동으로 라벨에 맞게 분류됨
